@@ -168,7 +168,6 @@ func (m *Manager) handle(u *tgbotapi.Update) error {
 
 	if ctx.Update.FromChat().IsPrivate() {
 		if u.Message != nil {
-			// 解析并处理命令
 			if u.Message.IsCommand() {
 				switch u.Message.Command() {
 				case pconst.CmdStart:
@@ -208,7 +207,6 @@ func (m *Manager) handle(u *tgbotapi.Update) error {
 					notRkbMessage = true
 				}
 
-				// 再根据用户状态判断是不是用户输入
 				if notRkbMessage {
 					status := GetUserStatus(ctx.GetOpenId())
 					switch status {
