@@ -106,7 +106,6 @@ func HandleSetUserScore(ctx *Context) error {
 	groupUsername := parseGroupUsername(param[0])
 	username := parseUsername(param[1])
 
-	// 只有群组的创建者或者管理员才能使用该命令
 	isAdmin, groupId, err := checkIsGroupAdmin(ctx, groupUsername, 0, ctx.GetOpenId())
 	if err != nil {
 		tlog.Error().Fields(map[string]interface{}{"action": "check is group error", "error": err.Error()}).Send()
